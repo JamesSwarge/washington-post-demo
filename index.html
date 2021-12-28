@@ -13,11 +13,11 @@
   <link rel="stylesheet" href="./css/styles.css">
 </head>
 
-<body>
+<body id="main_body">
 
   <div class="overflow-hidden-js">
     <!-- header -->
-    <header class="common-header st">
+    <header class="common-header st" id="common_header">
       <div class="container-fluid px-0">
         <div class="row">
           <div class="col">
@@ -31,14 +31,17 @@
               <div class="collapse navbar-collapse st" id="navcontent" style="justify-content: center;">
                 <ul class="navbar-nav mr-auto">
                   <li class="dropdown mr-4">
-                    <button style="z-index:999;position:relative" class="btn btn-secondary secc-bttn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <!-- <button style="z-index:999;position:relative" class="btn btn-secondary secc-bttn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Sections &nbsp;<i class="fas fa-bars"></i>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item" href="#">Politics</a>
                       <a class="dropdown-item" href="#">Opinions</a>
                       <a class="dropdown-item" href="#">Coronavirus</a>
-                    </div>
+                    </div> -->
+                    <button style="z-index:999;position:relative" class="btn btn-secondary secc-bttn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="openNav()">
+                      Sections &nbsp;<i class="fas fa-bars"></i>
+                    </button>
                   </li>
                   <li class="nav-item navul st"><a class="nav-link" href="#">Politics</a></li>
                   <li class="nav-item navul st"><a class="nav-link" href="#">Opinions</a></li>
@@ -64,6 +67,89 @@
         </div>
       </div>
     </header>
+
+    <!-- Sidenav -->
+    <div id="mySidenav" class="sidenav">
+      <div class="sidenav-wrap">
+        <button type="button" class="btn btn-primary blue-bttn">Subscribe</button>
+        
+        <div class="accordion sidenav_accordian" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed st" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Politics
+                </button>
+              </h2>
+            </div>      
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link st" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link st" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link st" href="#">Link</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed st" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Opinions
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link st" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link st" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link st" href="#">Link</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed st" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Investigations
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link st" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link st" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link st" href="#">Link</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
 
     <section style="padding-top: 80px;">
       <div class="container-fluid">
@@ -521,6 +607,30 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="./js/custom.js"></script>
+
+  <script>
+    function openNav() {
+      // document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("mySidenav").classList.toggle("wide");
+      document.getElementById("main_body").classList.toggle("modal-open");
+    }    
+    // function closeNav() {
+    //   document.getElementById("mySidenav").style.width = "0";
+    //   document.getElementById("main_body").classList.remove("modal-open");
+    // }
+
+    document.addEventListener('mouseup', function(e) {
+      let nav_container = document.getElementById('mySidenav');
+      let nav_main = document.getElementById('common_header');
+      if (!nav_container.contains(e.target) && !nav_main.contains(e.target)) {
+        // nav_container.style.display = 'none';
+        document.getElementById("mySidenav").classList.remove("wide");
+        // document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main_body").classList.remove("modal-open");
+      }
+    });
+  </script>
+
 </body>
 
 </html>
